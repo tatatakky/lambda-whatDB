@@ -1,4 +1,4 @@
-service: serverless-rest-api-with-dynamodb
+service: serverless-rest-api-with-dynamodb-2
 
 frameworkVersion: ">=1.1.0 <2.0.0"
 
@@ -42,7 +42,7 @@ functions:
     #API-Gatewayの構築
     events:
       - http:
-          path: todos/{id}
+          path: todos/{name}
           method: get
           cors: true
 
@@ -54,11 +54,11 @@ resources:
       Properties:
         AttributeDefinitions:
           -
-            AttributeName: id
+            AttributeName: name
             AttributeType: S
         KeySchema:
           -
-            AttributeName: id
+            AttributeName: name
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1

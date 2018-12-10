@@ -11,7 +11,7 @@ def get(event, context):
     # fetch todo from the database
     result = table.get_item(
         Key={
-            'id': event['pathParameters']['id']
+            'name': event['pathParameters']['name']
         }
     )
 
