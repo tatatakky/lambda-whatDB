@@ -14,7 +14,6 @@ def get(event, context):
             'name': event['pathParameters']['name']
         }
     )
-
     # create a response
     response = {
         "statusCode": 200,

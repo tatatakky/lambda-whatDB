@@ -29,7 +29,6 @@ def create(event, context):
         ]
         # 'checked': False,
     }
-
     # write the todo to the database
     table.put_item(Item=item)
 
