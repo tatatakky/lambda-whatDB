@@ -22,11 +22,7 @@ def create(event, context):
     item = {
         'name': data['value'][0],
         'id': str(uuid.uuid1()),
-        'data': [
-            data['value'][1],
-            data['value'][2],
-            data['value'][3]
-        ]
+        'data': data['value'][1:]
         # 'checked': False,
     }
     # write the todo to the database
