@@ -14,9 +14,14 @@ def get(event, context):
             'name': event['pathParameters']['name']
         }
     )
+
     # create a response
     response = {
         "statusCode": 200,
+        "headers": {
+                "Access-Control-Allow-Origin" : "*",
+                "Access-Control-Allow-Credentials" : True
+            },
         "body": json.dumps(result['Item'],cls=decimalencoder.DecimalEncoder)
     }
 

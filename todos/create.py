@@ -17,22 +17,33 @@ def create(event, context):
         raise Exception("Couldn't create the todo item.")
         return
 
-    timestamp = int(time.time() * 1000)
-
     table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
 
-    d = tuple(data['value'])
-
     item = {
-        'name': d[0],
+        'name': data['value'][0],
         'id': str(uuid.uuid1()),
         'Logs': [
-            {"Id": d[1]},
-            {"start_time": int(time.time())},
-            {"end_time": int(time.time()) + 5},
-            {"start_amount": d[2]},
-            {"end_amount": d[3]},
-            {"state": "active"}
+            {"Id": data['value'][1],
+            "start_time": int(time.time()),
+            "end_time": int(time.time()) + 5,
+            "start_amount": data['value'][2],
+            "end_amount": data['value'][3],
+            "state": "active"
+            },
+            {"Id": data['value'][1] + 50000000,
+            "start_time": int(time.time()) + 60,
+            "end_time": int(time.time()) + 100,
+            "start_amount": data['value'][2] + 2222,
+            "end_amount": data['value'][3] + 2222,
+            "state": "active"
+            },
+            {"Id": data['value'][1] + 100000000,
+            "start_time": int(time.time()) + 500,
+            "end_time": int(time.time()) + 600,
+            "start_amount": data['value'][2] + 7777777,
+            "end_amount": data['value'][3] + 77777777,
+            "state": "active"
+            }
         ]
         # 'checked': False,
     }
